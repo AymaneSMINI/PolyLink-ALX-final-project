@@ -1,0 +1,41 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.navbar{
+margin: 50px ;
+
+}
+.logo{
+  margin: 40px;
+}
+.mat-flat-button.mat-signin {
+  background-color: green;
+  color: #fa1010;
+}
+.navlinks{
+  margin: 90px;
+}
+
+.navlinks button{
+  margin-right: 20px;
+}
+
+::ng-deep button.login {
+  color: #02022c  !important;
+  background-color: #e8e8f0 !important;
+  padding: 22px;
+  margin: 10px;
+}
+
+::ng-deep button.signup {
+  color: #ffffff !important;
+  background-color: #02022c !important;
+  padding: 22px;
+  margin: 20px;
+}
+
+::ng-deep mat-toolbar{
+  border-radius: 40px;
+  background-color: #580909;
+  
+}
