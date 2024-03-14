@@ -1,23 +1,27 @@
 <div>
     <mat-grid-list cols="2" >
       <mat-grid-tile>
-        <form class="example-form">
-            <mat-form-field class="example-full-width">
+        <form   [formGroup] = "userForm" (ngSubmit) = "onFormSubmit()" class="example-form">
+            <h1>Join Polylink</h1>
+            <h3>Sign up for free!</h3>
+            <mat-form-field  class="example-full-width">
               <mat-label>Username</mat-label>
-              <input matInput >
+              <input  autocomplete="off" matInput formControlName = 'username'>
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+            <mat-form-field  class="example-full-width">
               <mat-label>Email</mat-label>
-              <input matInput >
+              <input matInput autocomplete="off" formControlName = 'email'>
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+            <mat-form-field  class="example-full-width">
               <mat-label>password</mat-label>
-              <input matInput >
+              <input matInput autocomplete="off" formControlName = 'password'>
             </mat-form-field>
+            <button mat-raised-button type="submit">Create account</button>
+            <p>Already have an account? <a href="/login">Log in</a></p>
           </form>          
       </mat-grid-tile>
-      <mat-grid-tile>
-        <h1 style="padding-right: 60px;  color: #d2e823;font-weight: 900; font-size: 60px; line-height: 60px;">Everything you are. In one, simple link in bio.</h1>
+      <mat-grid-tile class="grid2">
+        <img src="../../assets/2.png" alt="">
       </mat-grid-tile>
     </mat-grid-list>
   </div>
