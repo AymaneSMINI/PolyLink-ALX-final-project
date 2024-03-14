@@ -6,7 +6,11 @@ margin: 50px ;
 
 }
 .logo{
-  margin: 40px;
+    margin: 40px;
+    color: #580909;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: x-large;
 }
 .mat-flat-button.mat-signin {
   background-color: green;
