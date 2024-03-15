@@ -51,4 +51,7 @@ html, body {
     padding-right: 60px;  
     height: 100%;
   }
-  
+  .mat-mdc-raised-button:not(:disabled) {
+    color: #000;
+    background: #d2e823;
+  }
