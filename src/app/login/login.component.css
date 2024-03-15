@@ -1,3 +1,57 @@
-html, body{
+html, body {
     background-color: #254f1a;
-}
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;  
+  }
+  .example-form h1{
+    font-size: 55px;
+    line-height: 1.2;
+    font-weight: bold;
+    letter-spacing: -2px;
+    color: #e9c0e9;
+  }
+  .example-form h3{
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    line-height: 6px;
+    padding-bottom: 54px;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+  .example-full-width mat-label{
+    color: #000000;
+    border: #000;
+  }
+  .mat-mdc-text-field-wrapper {
+    background-color: rgb(255, 255, 255);
+  }
+  .example-form button{
+    width: 90%;
+    border-radius: 20px;
+    font-size: 15px;
+    letter-spacing: 0px;
+  }
+  .example-form .login {
+    font-size: 16px;
+    letter-spacing: 0px;
+    margin-top: 30px;
+    color: aliceblue;
+  }
+
+  .mat-grid-tile-content{
+    height: 80%;
+  }
+  .grid2 img{
+    padding-right: 60px;  
+    height: 100%;
+  }
+  .mat-mdc-raised-button:not(:disabled) {
+    color: #000;
+    background: #e9c0e9;
+  }
