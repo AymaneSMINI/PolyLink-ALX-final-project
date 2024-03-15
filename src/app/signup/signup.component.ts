@@ -20,6 +20,24 @@ export class SignupComponent {
   }
   onFormSubmit(){
     console.log(this.userForm.value);
-    
+    this.user_service.adduser(this.userForm.value).subscribe({
+      next: (val:any) => {        
+        this.userForm.reset();
+        console.log(val);
+        
+        /* Swal.fire(
+          'Added!',
+          'Your product has been Added successfuly.',
+          'success'
+        ) */},
+      error:(err:any) =>{
+        console.log(err);
+        Swal.fire(
+          'Error!',
+          'this email and username already exist',
+          'error'
+        )
+      }
+    })
   }
 }
