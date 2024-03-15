@@ -16,15 +16,22 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { VerificationComponent } from './verification/verification.component';
+import { CodeInputModule } from 'angular-code-input';
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    VerificationComponent
   ],
   imports: [
+    CodeInputModule.forRoot({
+      codeLength: 6,
+      isCharsCode: true,
+      code: ''
+    }),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

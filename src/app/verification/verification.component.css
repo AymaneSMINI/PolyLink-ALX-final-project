@@ -1,0 +1,20 @@
+h1,h3,p{
+    color: #e9c0e9;
+}
+  ::ng-deep code-input{
+    width: 300px;
+    justify-content: center;
+  }
+  code-input {
+    --item-spacing: 20px;
+    --item-height: 3em;
+    margin: auto;
+    color: #ffffff;
+    font-weight: 700;
+}
+button{
+    width: 30%;
+    font-size: 15px;
+    letter-spacing: 0px;
+    margin-top: 40px;
+  }
