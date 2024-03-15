@@ -3,7 +3,6 @@
   }
 .navbar{
 margin: 50px ;
-
 }
 .logo{
     margin: 40px;
@@ -23,7 +22,55 @@ margin: 50px ;
 .navlinks button{
   margin-right: 20px;
 }
+.elem1{
+  margin-top: -100px;
+}
+/*title*/
+.title1 h1{
+  padding-left: 60px;
+  color: #e9c0e9;
+  font-weight: 900; 
+  font-size: 55px; 
+  line-height: 60px;
+}
+.title2 h1{
+  padding-right: 60px;
+  color: #d2e823;
+  font-weight: 900; 
+  font-size: 55px; 
+  line-height: 60px;
+}
+.title3 h1{
+  padding-left: 60px;
+    color: #502274;
+  font-weight: 900; 
+  font-size: 55px; 
+  line-height: 60px;
+}
+/*Description*/
 
+.title1 h3 {
+  padding-left: 62px;
+  color: #e9c0e9;
+  padding-right: 10px;
+  font-weight: 500;
+}
+.title2 h3 {
+  padding-right: 62px;
+  color: #d2e823;
+  padding-left: 10px;
+  font-weight: 500;
+}
+.title3 h3 {
+  padding-left: 62px;
+  color: #502274;
+  padding-right: 10px;
+  font-weight: 500;
+}
+.img {
+  height: 90%;
+
+}
 ::ng-deep button.login {
   color: #02022c  !important;
   background-color: #e8e8f0 !important;
