@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../services/users/users.service';
 
 @Component({
   selector: 'app-signup',
