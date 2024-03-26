@@ -1,0 +1,35 @@
+.card {
+    width: 80%;
+    margin: auto; 
+    background-color: aqua; 
+}
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .input-row {
+  
+    margin-top: 5px;
+    display: inline;
+    gap: 10px;
+    margin-right: 5px;
+  }
+  
+  .field {
+    max-width: 700px;
+    min-width: 150px;
+    width: 49%;
+  }
+  
+  .mat-input-element {
+    height: 20px;
+    /* Adjust the height as needed */
+  }
+  

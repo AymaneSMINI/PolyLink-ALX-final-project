@@ -1,5 +1,5 @@
 import { Component,ViewEncapsulation } from '@angular/core';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../services/users/users.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
