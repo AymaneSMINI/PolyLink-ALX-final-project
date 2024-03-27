@@ -2,6 +2,10 @@ import { Component,ViewEncapsulation } from '@angular/core';
 import { UsersService } from '../services/users/users.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { Token } from '@angular/compiler';
+import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +16,8 @@ import Swal from 'sweetalert2';
 export class LoginComponent {
 
   userForm : FormGroup;
-  constructor(private _form : FormBuilder, private user_service : UsersService ){
+  constructor(private _form : FormBuilder, private user_service : UsersService, 
+    private router : Router,private cookieService: CookieService ){
     this.userForm = this._form.group({
       email : [null,Validators.required],
       password : [null,Validators.required],
@@ -20,21 +25,21 @@ export class LoginComponent {
   }
   onFormSubmit(){
     console.log(this.userForm.value);
-    this.user_service.adduser(this.userForm.value).subscribe({
-      next: (val:any) => {        
+    this.user_service.login(this.userForm.value).subscribe({
+      next: (val:any) => {
+        this.cookieService.set("userItem",val.token);
+        this.cookieService.set('userData', jwt_decode.jwtDecode(val.token));
+        this.router.navigateByUrl('/dashboard');
         this.userForm.reset();
-        console.log(val);
-        
-        /* Swal.fire(
+         Swal.fire(
           'Added!',
-          'Your product has been Added successfuly.',
+          "User successfully registered!",
           'success'
-        ) */},
-      error:(err:any) =>{
-        console.log(err);
+        ) },
+      error:(err:any) =>{        
         Swal.fire(
           'Error!',
-          'this email and username already exist',
+          ''+err.error.message,
           'error'
         )
       }

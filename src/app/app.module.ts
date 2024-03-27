@@ -20,13 +20,19 @@ import { CodeInputModule } from 'angular-code-input';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RouteComponent } from './route/route.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
     VerificationComponent,
-    DashboardComponent
+    DashboardComponent,
+    RouteComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     CodeInputModule.forRoot({
