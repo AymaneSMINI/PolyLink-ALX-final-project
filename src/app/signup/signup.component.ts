@@ -2,6 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UsersService } from '../services/users/users.service';
+import { Router } from '@angular/router';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +13,8 @@ import { UsersService } from '../services/users/users.service';
 })
 export class SignupComponent {
   userForm : FormGroup;
-  constructor(private _form : FormBuilder, private user_service : UsersService ){
+  constructor(private _form : FormBuilder, private user_service : UsersService, 
+    private route: Router, private shared:SharedService ){
     this.userForm = this._form.group({
       username : [null,Validators.required],
       email : [null,Validators.required],
@@ -19,22 +22,16 @@ export class SignupComponent {
     })
   }
   onFormSubmit(){
-    console.log(this.userForm.value);
-    this.user_service.adduser(this.userForm.value).subscribe({
-      next: (val:any) => {        
+    this.user_service.register(this.userForm.value).subscribe({      
+      next: (val:any) => {     
+        this.shared.setUserData(this.userForm.value);  
         this.userForm.reset();
-        console.log(val);
-        
-        /* Swal.fire(
-          'Added!',
-          'Your product has been Added successfuly.',
-          'success'
-        ) */},
+        this.route.navigateByUrl('/verification')
+        },
       error:(err:any) =>{
-        console.log(err);
         Swal.fire(
           'Error!',
-          'this email and username already exist',
+          ''+err.error.message,
           'error'
         )
       }

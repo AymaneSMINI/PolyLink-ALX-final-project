@@ -7,18 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-  url = "http://localhost:8000/";
+  url = "http://localhost:8000/api/";
 
   constructor(private _http : HttpClient) { }
 
-  adduser (data : any): Observable<any> {
-    return this._http.post(this.url + "", data);
+  register (data : any): Observable<any> {
+    return this._http.post(this.url + "register", data);
    }
-  /* getuser (): Observable<any> {
-    return this._http.get(this.url + "");
+  login (data : any): Observable<any> {
+    return this._http.post(this.url + "login",data);
    }
-  addroute(id : number, data : []): Observable<any> {
+   verification (data : any): Observable<any> {
+    return this._http.post(this.url + "verification",data);
+   }
+  addroute(data : []): Observable<any> {
     return this._http.post(this.url + "" , data);
-   } */
+   } 
 
 }
