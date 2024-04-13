@@ -23,6 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouteComponent } from './route/route.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { CookieService } from 'ngx-cookie-service';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { HomeComponent } from './home/home.component';
     DashboardComponent,
     RouteComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    LandingpageComponent
   ],
   imports: [
     CodeInputModule.forRoot({
@@ -54,9 +57,9 @@ import { HomeComponent } from './home/home.component';
     MatSelectModule,
     MatTableModule,
     MatFormFieldModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

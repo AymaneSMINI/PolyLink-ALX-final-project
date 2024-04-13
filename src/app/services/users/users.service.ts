@@ -14,14 +14,18 @@ export class UsersService {
   register (data : any): Observable<any> {
     return this._http.post(this.url + "register", data);
    }
-  login (data : any): Observable<any> {
+  login (data : any): Observable<any> {    
     return this._http.post(this.url + "login",data);
    }
    verification (data : any): Observable<any> {
     return this._http.post(this.url + "verification",data);
    }
   addroute(data : []): Observable<any> {
-    return this._http.post(this.url + "" , data);
+    return this._http.post(this.url + "add-route" , data);
    } 
+  getId(email : any): Observable<any>{
+    return this._http.post(this.url + "getId" , email);
+  }
+
 
 }

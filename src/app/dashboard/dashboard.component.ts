@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { LinksService } from '../services/links/links.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,24 +12,73 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  public elements:Array<{link:''}> = [];
+  public links:Array<any> = [];
   linkform : FormGroup;
+  id_route : any;
+  username : string = '';
+  route : string = '';
+  id : any;
+  body : any;
   constructor(private _form:FormBuilder,private _servicelink: LinksService,
-    private _cookieService: CookieService,private _router:Router){
-    this.linkform = this._form.group({link :  [null,Validators.required]})
-    if (this._cookieService.check("userData") && this._cookieService.check("userItem")) {
-      this._router.navigate(['/dashboard']);
-    } else {
-      this._router.navigate(['/login']);
-   }
+    private _router:Router, private cookieService: CookieService){
+    this.linkform = this._form.group({
+      link :  [null,Validators.required],
+      title :  [null,Validators.required]
+    })    
+    
   }
-  public appendLink():void {
-     this.elements.push(this.linkform.value);
-     this._servicelink.add_link(this.linkform.value).subscribe(val=>{
+  ngOnInit(){
+    this.id =  this.cookieService.get('user_id');
+    this.getuser();
+    this.getroute();
+    console.log(this.route, this.username,this.id_route,this.id);
+  }
 
-     })
-     console.log(this.elements);
+  public appendLink():void {
+   this.body = {
+      "link_title"  : this.linkform.value.title,
+      "user_id" : this.id,
+      "route_id" : this.id_route,
+      "link"  : this.linkform.value.link
+  }
+  console.log(this.body);      
+     this._servicelink.add_link(this.body).subscribe({next: (val)=>{
+      this.linkform.reset();
+      Swal.fire(
+        'success!',
+        ''+val.message,
+        'success'
+      )
+      this.getlinks()
+     }})
      
     }
-    
+    getlinks(){
+      this._servicelink.getLinks(this.id,this.id_route).subscribe({next :(val)=>{
+        console.log("getlinks", val.result);
+        this.links = val.result;
+      }})
+    }
+    getuser(){      
+      this._servicelink.getUser( this.cookieService.get('user_id')).subscribe((val)=>{
+        this.username = val.user[0].username;
+    })
+    }
+    getroute(){
+      this._servicelink.getRoute(this.id).subscribe({
+        next : (val:any)=>{
+          console.log("route", val.result[0]);
+          this.route = val.result[0].route;
+          this.id_route = val.result[0].route_id;
+          this.getlinks()
+        },
+        error:(err:any) =>{        
+          console.log(err);
+          
+        }
+      });
+    }    
+    onNavigate(link : any){
+      window.open(link, "_blank");
+  }
 }
