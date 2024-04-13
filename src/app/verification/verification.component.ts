@@ -3,6 +3,7 @@ import { UsersService } from '../services/users/users.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SharedService } from '../services/shared.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-verification',
@@ -11,21 +12,22 @@ import { SharedService } from '../services/shared.service';
 })
 export class VerificationComponent {
   code: string | undefined;
-  email : string | undefined;
-  constructor(private service: UsersService, private route : Router, private shared:SharedService){
+  data: any;
+  constructor(private service: UsersService, private route : Router, 
+    private cookieService: CookieService,private shared:SharedService){
   }
   ngOnInit(){
     this.shared.getUserData().subscribe(data => {
-      this.email = data.email;
+      this.data = data;
   });
   }
   onCodeCompleted(code: string) {
     this.code = code; 
   }
   Verify(){
-    this.service.verification({"email": this.email,"code":this.code}).subscribe((res)=>{
+    this.service.verification({"email": this.data.email,"code":this.code}).subscribe((res)=>{
       if(res){
-        this.shared.setUserData(res);
+        this.cookieService.set( 'user_id', res.result[0].user_id);
         this.route.navigateByUrl('/add-route');
       }
       else{

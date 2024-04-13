@@ -1,1 +1,11 @@
-<p>route works!</p>
+<div class="card">
+    <form [formGroup]="routeform" (ngSubmit)="addroute()">
+        <mat-form-field floatLabel="always" style="width: 80%; margin: auto;">
+            <mat-label>add route</mat-label>
+            <input matInput type="text" autocomplete="off" class="example-right-align" formControlName="route">
+            <span matTextPrefix>polylink/&nbsp;</span>
+        </mat-form-field>
+        <button mat-stroked-button type="submit" style="width: 40%; background-color: aliceblue; margin: auto;"><mat-icon>add</mat-icon> add route </button>
+    </form>
+</div>
+

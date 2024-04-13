@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { UsersService } from '../services/users/users.service';
 import { Router } from '@angular/router';
 import { SharedService } from '../services/shared.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,7 @@ import { SharedService } from '../services/shared.service';
 export class SignupComponent {
   userForm : FormGroup;
   constructor(private _form : FormBuilder, private user_service : UsersService, 
-    private route: Router, private shared:SharedService ){
+    private route: Router, private shared:SharedService, private cookieService: CookieService ){
     this.userForm = this._form.group({
       username : [null,Validators.required],
       email : [null,Validators.required],
@@ -36,5 +37,17 @@ export class SignupComponent {
         )
       }
     })
+  }
+  getId(){
+    console.log("email form",this.userForm.value.email);
+    
+    this.user_service.getId("adam@gmail.com").subscribe({
+      next : (val:any)=>{
+        console.log(val);   
+/*         this.cookieService.set( 'user_id', val.user_id); 
+ */      }
+    }
+
+    )
   }
 }

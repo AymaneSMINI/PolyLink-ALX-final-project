@@ -14,7 +14,7 @@ import * as jwt_decode from "jwt-decode";
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent {
-
+  token : any;
   userForm : FormGroup;
   constructor(private _form : FormBuilder, private user_service : UsersService, 
     private router : Router,private cookieService: CookieService ){
@@ -24,16 +24,17 @@ export class LoginComponent {
     })
   }
   onFormSubmit(){
-    console.log(this.userForm.value);
-    this.user_service.login(this.userForm.value).subscribe({
+    this.user_service.login(this.userForm.getRawValue()).subscribe({
       next: (val:any) => {
         this.cookieService.set("userItem",val.token);
         this.cookieService.set('userData', jwt_decode.jwtDecode(val.token));
+        this.token = jwt_decode.jwtDecode(val.token);
+        this.cookieService.set("user_id",this.token.user[0].user_id);
         this.router.navigateByUrl('/dashboard');
         this.userForm.reset();
          Swal.fire(
-          'Added!',
-          "User successfully registered!",
+          'Logged!',
+          "you're successfully Logged!",
           'success'
         ) },
       error:(err:any) =>{        
