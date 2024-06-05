@@ -1,0 +1,40 @@
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar{
+    background-color: white;
+    height: 412px;
+    width: 100px;
+    margin: 83px;
+    border-radius: 10px;
+}
+.information{
+    background-color: #780016;
+    border-radius: 10px;
+    border-color: #ffffff00;
+    margin: 25px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.information mat-icon{
+    color: white;
+    transform: scale(1.5);
+}
+.information mat-icon.active{
+    color: #1E3050;
+    background-color: #780016;
+    transform: scale(1.5);
+}
+
+.data{
+    background-color: white;
+    width: 1000px;
+    height: 412px;
+    margin: 50px;
+    margin-right: 111px;
+    border-radius: 10px;
+    height: auto;
+}

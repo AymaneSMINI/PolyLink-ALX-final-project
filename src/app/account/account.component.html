@@ -1,0 +1,11 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container">
+    <div class="sidebar">
+        <button  class="information" *ngFor="let item of icons" [routerLink]="['/account', item.path]" [style.background-color]="isActive(item.path) ? '#4aa3a2' : null">
+            <mat-icon>{{item.icon}}</mat-icon>
+        </button>
+    </div>
+    <div class="data">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.navbar{
+margin: 50px ;
+}
+.logo{
+    margin: 40px;
+    color: #580909;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: x-large;
+}
+.mat-flat-button.mat-signin {
+  background-color: green;
+  color: #fa1010;
+}
+.navlinks{
+  margin: 90px;
+}
+
+.navlinks button{
+  margin-right: 20px;
+}
+.elem1{
+  margin-top: -100px;
+}
+.signup{
+    margin: 8px;
+}

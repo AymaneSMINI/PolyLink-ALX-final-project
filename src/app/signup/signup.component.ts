@@ -14,20 +14,22 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SignupComponent {
   userForm : FormGroup;
+  namePattern = /^[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}$/
   constructor(private _form : FormBuilder, private user_service : UsersService, 
     private route: Router, private shared:SharedService, private cookieService: CookieService ){
     this.userForm = this._form.group({
       username : [null,Validators.required],
-      email : [null,Validators.required],
+      email : [null,Validators.required,Validators.email,Validators.pattern(this.namePattern)],
       password : [null,Validators.required],
     })
   }
-  onFormSubmit(){
+  onFormSubmit(){    
     this.user_service.register(this.userForm.value).subscribe({      
       next: (val:any) => {     
-        this.shared.setUserData(this.userForm.value);  
+        this.shared.setUserData(this.userForm.value);
+        this.getId();  
         this.userForm.reset();
-        this.route.navigateByUrl('/verification')
+        this.route.navigateByUrl('/add-route')
         },
       error:(err:any) =>{
         Swal.fire(
