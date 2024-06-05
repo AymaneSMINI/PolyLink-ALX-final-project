@@ -1,7 +1,9 @@
 <div class="card">
+    <h1 style="font-weight: 600; font-size: 30px; color: antiquewhite; margin-bottom: 30px;">One more step! You need to add your route </h1>
+
     <form [formGroup]="routeform" (ngSubmit)="addroute()">
         <mat-form-field floatLabel="always" style="width: 80%; margin: auto;">
-            <mat-label>add route</mat-label>
+            <mat-label >add route</mat-label>
             <input matInput type="text" autocomplete="off" class="example-right-align" formControlName="route">
             <span matTextPrefix>polylink/&nbsp;</span>
         </mat-form-field>

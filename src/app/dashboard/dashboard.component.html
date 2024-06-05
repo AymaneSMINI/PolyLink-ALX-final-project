@@ -1,15 +1,20 @@
-<app-navbar></app-navbar>
+<app-navbar-admin></app-navbar-admin>
 <div class="elem1">
   <mat-grid-list cols="2" >
     <mat-grid-tile>
         <mat-card class="card">
-           <span style="margin-left: 10px; margin: auto; font-size: large; margin-top: 10px;">your Polylink is live: <a  style="width: 60%;"color="primary" [routerLink]="['/polylink', route]" >Polylink/{{route}}</a></span>
-          <mat-card-header> <h4>Enter URL</h4> </mat-card-header>
-          <mat-divider style="margin-bottom: 15px"></mat-divider>
+          <div style="background-color: #b2caf7;border-radius: 7px; padding: 20px; margin: 10px;">
+            <span style="padding: 20px; margin-left: 10px; margin: auto; font-size: large; margin-top: 10px;">🔥 your Polylink is live: 
+              <a  style="width: 60%;" [routerLink]="['/polylink', route]" >Polylink/{{route}}</a></span>
+          </div>
           <mat-card-content>
             <form [formGroup]="linkform" class="example-form" (ngSubmit)="appendLink()">
-              <mat-form-field style="margin-bottom: 10px; width: 50%;" appearance="outline">
-                <mat-label style="font-size: small;">Title</mat-label>
+              <!-- <mat-form-field style="margin-bottom: 10px;margin-top: 10px; width: 50%;" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" formControlName="title">
+              </mat-form-field> -->
+              <mat-form-field style="margin-bottom: 10px;margin-top: 10px; " class="example-full-width">
+                <mat-label>Title</mat-label>
                 <input matInput type="url" formControlName="title">
               </mat-form-field>
               <mat-form-field class="example-full-width">
@@ -19,20 +24,20 @@
               <div style="text-align: center;">
                 <button mat-button  style="color: white; width: 40%; background-color: #5D18A2 ; margin: auto;" type="submit">add link</button>
               </div>
-          </form>
+            </form>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
     <mat-grid-tile> 
-      <div style="padding: 7px;min-width: 400px;min-height: 400px; border-style: solid; border-width:2px; border-color: black; border-radius: 5%;">
+      <div style="padding: 7px;min-width: 300px;min-height: 500px; border-style: solid; border-width:4px; border-color: rgb(131, 131, 131); border-radius: 4%; background-color: #4398ba;">
         <div style="display: flex; flex-direction: column; margin-top: 0;position:relative;">
           <div class="circle">
           </div>
-          <div><h4 style="text-align: center; font-size: larger; margin-top: 10px; color: white;">{{username}}</h4></div>
+          <div><h4 style="text-align: center; font-size: larger; margin-top: 10px; color: white;">@{{username}}</h4></div>
         </div>
         <div >
           <div *ngFor="let element of links" style="margin:10px; text-align: center; ">
-            <button (click)= "onNavigate(element.links)"  mat-button style="color: white; width: 80%;color: #780016; background-color: lightblue ; margin: auto;">{{element.link_title}}</button>
+            <button (click)= "onNavigate(element.links)"  mat-button style="color: white; width: 80%;color: #780016; background-color: rgb(253, 253, 253) ; margin: auto;">{{element.link_title}}</button>
             </div>
         </div>
       </div>

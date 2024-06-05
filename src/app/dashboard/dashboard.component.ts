@@ -31,7 +31,6 @@ export class DashboardComponent {
     this.id =  this.cookieService.get('user_id');
     this.getuser();
     this.getroute();
-    console.log(this.route, this.username,this.id_route,this.id);
   }
 
   public appendLink():void {
@@ -41,7 +40,6 @@ export class DashboardComponent {
       "route_id" : this.id_route,
       "link"  : this.linkform.value.link
   }
-  console.log(this.body);      
      this._servicelink.add_link(this.body).subscribe({next: (val)=>{
       this.linkform.reset();
       Swal.fire(
@@ -55,7 +53,6 @@ export class DashboardComponent {
     }
     getlinks(){
       this._servicelink.getLinks(this.id,this.id_route).subscribe({next :(val)=>{
-        console.log("getlinks", val.result);
         this.links = val.result;
       }})
     }
@@ -67,7 +64,6 @@ export class DashboardComponent {
     getroute(){
       this._servicelink.getRoute(this.id).subscribe({
         next : (val:any)=>{
-          console.log("route", val.result[0]);
           this.route = val.result[0].route;
           this.id_route = val.result[0].route_id;
           this.getlinks()

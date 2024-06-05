@@ -1,0 +1,25 @@
+<!-- <h1 style="text-align: center; margin: 10px; font-weight: 800;">Information</h1>
+ --><div style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="image" style="margin-top: 80px; margin-left: 90px;">
+        <img src="../../assets/profile1.png" alt="profil image"  style="border-radius: 50%; width: 120px;">
+    </div>
+    <div class="buttons" >
+        <label for="file-upload" class="custom-file-upload">
+             Upload picture
+        </label>
+        <input  id="file-upload" type="file" accept=".png, .jpg, .jpeg" (change)="OnFileSelected()" />
+        <button  class="remove" mat-button>Remove picture</button>
+    </div>
+</div>
+<form action="" class="form">
+    <h3 style="margin-left: 175px;">Update my information</h3>
+    <mat-form-field class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>Route</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="button"> Update</button>
+</form>

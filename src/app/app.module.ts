@@ -25,6 +25,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
+import { AccountComponent } from './account/account.component';
+import { InformationComponent } from './information/information.component';
+import { LinksComponent } from './links/links.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { TemplatesComponent } from './templates/templates.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +41,13 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     RouteComponent,
     NavbarComponent,
     HomeComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    NavbarAdminComponent,
+    AccountComponent,
+    InformationComponent,
+    LinksComponent,
+    ChangepasswordComponent,
+    TemplatesComponent
   ],
   imports: [
     CodeInputModule.forRoot({

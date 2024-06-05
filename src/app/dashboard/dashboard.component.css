@@ -1,7 +1,9 @@
 .card {
     width: 80%;
     margin: auto; 
-    background-color: rgb(255, 255, 255); 
+    background-color: #ffffff;
+    padding: 30px;
+
 }
 .elem1{
   margin-top: -100px;
@@ -37,7 +39,7 @@
   }
   
   .circle {
-    background: lightblue;
+    background: rgb(255, 255, 255);
     border-radius: 50%;
     width: 80px;
     height: 80px;

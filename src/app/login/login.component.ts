@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Token } from '@angular/compiler';
 import * as jwt_decode from "jwt-decode";
 
 @Component({
@@ -26,11 +25,18 @@ export class LoginComponent {
   onFormSubmit(){
     this.user_service.login(this.userForm.getRawValue()).subscribe({
       next: (val:any) => {
+        this.token = val.token
         this.cookieService.set("userItem",val.token);
-        this.cookieService.set('userData', jwt_decode.jwtDecode(val.token));
+        this.cookieService.set('userData', jwt_decode.jwtDecode(this.token));
         this.token = jwt_decode.jwtDecode(val.token);
         this.cookieService.set("user_id",this.token.user[0].user_id);
-        this.router.navigateByUrl('/dashboard');
+        console.log(" message: "+ val.message);
+        if(val.message == "uncomplited login"){
+          this.router.navigateByUrl('/add-route');
+        }
+        else{
+          this.router.navigateByUrl('/dashboard');
+        }
         this.userForm.reset();
          Swal.fire(
           'Logged!',
